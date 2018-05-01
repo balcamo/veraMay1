@@ -71,11 +71,11 @@ export class MailingComponent implements OnInit {
       headers: pageHeaders
     });
     let body = JSON.stringify(this.filters);
-    console.log("[DEBUG] body:", body);
+    //console.log("[DEBUG] body:", body);
 		// The post request which takes parameters of address, body, options
-    this.http.post('/getreport', body, options)
+    //this.http.post('/getreport', body, options)
      // .map((res) => res.json())
-      .subscribe((data) => this.waitForHttp(data));
+     // .subscribe((data) => this.waitForHttp(data));
   }
 
 	private waitForHttp(data: Array<any>) {

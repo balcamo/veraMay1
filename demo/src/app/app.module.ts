@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
+import { HttpClientModule } from '@angular/common/http';
 
 /* peices for material */
 import { CommonModule } from '@angular/common';
@@ -23,6 +24,7 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SafetyComponent } from './safety/safety.component';
 import { MailingComponent } from './mailing/mailing.component';
+import { ApiService } from './api.service';
 
 
 @NgModule({
@@ -44,7 +46,8 @@ import { MailingComponent } from './mailing/mailing.component';
     MatCardModule,
     MatExpansionModule,
     MatCheckboxModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
   exports: [
     MatButtonModule,
@@ -54,9 +57,10 @@ import { MailingComponent } from './mailing/mailing.component';
     MatCardModule,
     MatExpansionModule,
     MatCheckboxModule,
-    HttpModule
+    HttpModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [ApiService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
