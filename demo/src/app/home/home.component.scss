@@ -1,0 +1,23 @@
+@import '../../theme';
+.container {
+  text-align:center;
+  display:grid;
+  width:50% auto;
+}
+.mat-grid-list {
+
+}
+.mat-grid-tile {
+  display: flex;
+  text-align: center;
+  margin-left: 12vw;
+
+}
+.color-light {
+  background-color: $palette-light-900;
+}
+
+.color-dark {
+  background-color: $palette-secondary-900;
+}
+

@@ -1,0 +1,41 @@
+<div>
+  <mat-accordion>
+    <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title>
+          Query Parameters
+        </mat-panel-title>
+        <mat-panel-description>
+          select what field you want to filter by
+        </mat-panel-description>
+      </mat-expansion-panel-header>
+      <mat-checkbox *ngFor="let check of checks"
+                    class="example-margin" [(ngModel)]="check.isChecked">{{ check.name }}</mat-checkbox>
+      <button mat-button (click)="showSelected()">Submit</button>
+
+    </mat-expansion-panel>
+
+  </mat-accordion>
+  <div [ngStyle]="{'display':statusCh}" class="container">
+    <p>Status</p>
+    <mat-radio-group [(ngModel)]="status">
+      <mat-radio-button class="example-margin" value="active">Active</mat-radio-button>
+      <mat-radio-button class="example-margin" value="disabled">Disabled</mat-radio-button>
+      <mat-radio-button class="example-margin" value="deleted">Deleted</mat-radio-button>
+      <mat-radio-button class="example-margin" value="all">All</mat-radio-button>
+    </mat-radio-group>
+  </div>
+
+  <div [ngStyle]="{'display':serviceCh}" class="container">
+    <p>Service Type</p>
+    <mat-radio-group [(ngModel)]="serviceType">
+      <mat-radio-button class="example-margin" value="water">Water</mat-radio-button>
+      <mat-radio-button class="example-margin" value="eletric">Eletric</mat-radio-button>
+      <mat-radio-button class="example-margin" value="both">Both</mat-radio-button>
+    </mat-radio-group>
+  </div>
+  <div>
+    <button mat-button (click)="getReport()">Get Report</button>
+  </div>
+  
+</div>
