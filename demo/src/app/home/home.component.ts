@@ -17,7 +17,7 @@ export class HomeComponent implements OnInit {
 ngOnInit() {
   this.tiles = [
     { text: 'safety', cols: 12 / this.total, rows: 12 / this.total, color: 'lightblue' },
-    { text: 'about', cols: 12 / this.total, rows: 12 / this.total, color: 'lightgreen' },
+    { text: 'outage', cols: 12 / this.total, rows: 12 / this.total, color: 'yellow' },
     { text: 'mailing', cols: 12 / this.total, rows: 12 / this.total, color: 'lightgreen' },
   ];
   }

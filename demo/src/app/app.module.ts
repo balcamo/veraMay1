@@ -7,7 +7,9 @@ import { HttpClientModule } from '@angular/common/http';
 
 /* peices for material */
 import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material';
+import {
+  MatButtonModule, MatInputModule, MatSelectModule,
+ } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatRadioModule } from '@angular/material/radio';
@@ -24,8 +26,9 @@ import { HomeComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SafetyComponent } from './safety/safety.component';
 import { MailingComponent } from './mailing/mailing.component';
-import { ApiService } from './api.service';
-
+import { ApiService } from './services/api.service';
+import { ReportServiceService } from './services/report-service.service';
+import { OutageComponent } from './outage/outage.component';
 
 @NgModule({
   declarations: [
@@ -33,7 +36,9 @@ import { ApiService } from './api.service';
     HomeComponent,
     AboutComponent,
     SafetyComponent,
-    MailingComponent
+    MailingComponent,
+    OutageComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -47,20 +52,25 @@ import { ApiService } from './api.service';
     MatExpansionModule,
     MatCheckboxModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatSelectModule,
+
   ],
   exports: [
     MatButtonModule,
     MatGridListModule,
     MatRadioModule,
-    FormsModule,
     MatCardModule,
     MatExpansionModule,
     MatCheckboxModule,
     HttpModule,
-    HttpClientModule
+    HttpClientModule,
+    MatInputModule,
+    MatSelectModule,
+
   ],
-  providers: [ApiService],
+  providers: [ApiService, ReportServiceService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

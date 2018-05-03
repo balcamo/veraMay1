@@ -1,21 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:300,700');
-@import './theme';
 
+@import './theme';
+@include angular-material-theme($theme)
 
 body {
-  text-align:center;
-  background: $palette-primary-500;
+  text-align: center;
+  background: $vera-primary;
   padding: 3em;
   font-family: 'PT Sans', 'Arial';
-  color: $palette-secondary-400;
+  color: $darkgrey;
 }
 img {
   width: 215px;
   height:auto;
 }
 button {
-  background: $palette-primary-500;
+  background: $vera-primary;
   padding-top:10vh;
 }
 ul {
@@ -31,7 +32,7 @@ ul li a {
   font-size: 1.5em;
 }
 a {
-  color: $palette-accent-500;
+  color: $vera-accent;
   text-decoration: none;
 }
 

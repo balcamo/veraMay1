@@ -1,0 +1,24 @@
+{
+  "customers": [
+    {
+      "name": "Troy",
+      "status": "active",
+      "serviceType": "water"
+    },
+    {
+      "name": "Catherine",
+      "status": "deleted",
+      "serviceType": "both"
+    },
+    {
+      "name": "Harmy",
+      "status": "disabled",
+      "serviceType": "eletric"
+    },
+    {
+      "name": "Bethany",
+      "status": "active",
+      "serviceType": "both"
+    }
+  ]
+}

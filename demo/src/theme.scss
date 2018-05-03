@@ -1,92 +1,178 @@
 @import '~@angular/material/theming';
+
 @include mat-core();
 /* primary color dark blue */
-$palette-primary: rgb(227, 231, 232) rgb(186, 194, 198) rgb(140, 154, 160) rgb(93, 113, 121) rgb(59, 82, 93) rgb(24, 52, 64) rgb(21, 47, 58) rgb(17, 39, 50) rgb(14, 33, 42) rgb(8, 21, 28) rgb(92, 185, 255) rgb(41, 163, 255) rgb(0, 140, 245) rgb(0, 125, 219);
+$darkblue: (
+  50 : #e3e7e8,
+  100 : #bac2c6,
+  200 : #8c9aa0,
+  300 : #5d7179,
+  400 : #3b525d,
+  500 : #183440,
+  600 : #152f3a,
+  700 : #112732,
+  800 : #0e212a,
+  900 : #08151c,
+  A100 : #5cb9ff,
+  A200 : #29a3ff,
+  A400 : #008cf5,
+  A700 : #007ddb,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    )
+);
 
-$palette-primary-50: nth($palette-primary, 1);
-$palette-primary-100: nth($palette-primary, 2);
-$palette-primary-200: nth($palette-primary, 3);
-$palette-primary-300: nth($palette-primary, 4);
-$palette-primary-400: nth($palette-primary, 5);
-$palette-primary-500: nth($palette-primary, 6);
-$palette-primary-600: nth($palette-primary, 7);
-$palette-primary-700: nth($palette-primary, 8);
-$palette-primary-800: nth($palette-primary, 9);
-$palette-primary-900: nth($palette-primary, 10);
-$palette-primary-A100: nth($palette-primary, 11);
-$palette-primary-A200: nth($palette-primary, 12);
-$palette-primary-A400: nth($palette-primary, 13);
-$palette-primary-A700: nth($palette-primary, 14);
 
 /* secondary color dark grey */
-$palette-secondary: rgb(240, 243, 245) rgb(217, 226, 230) rgb(191, 207, 214) rgb(165, 187, 198) rgb(146, 173, 185) rgb(127, 158, 173) rgb(119, 150, 166) rgb(108, 140, 156) rgb(98, 130, 147) rgb(79, 112, 131) rgb(229, 246, 255) rgb(179, 227, 255) rgb(128, 208, 255) rgb(102, 198, 255);
-
-$palette-secondary-50: nth($palette-secondary, 1);
-$palette-secondary-100: nth($palette-secondary, 2);
-$palette-secondary-200: nth($palette-secondary, 3);
-$palette-secondary-300: nth($palette-secondary, 4);
-$palette-secondary-400: nth($palette-secondary, 5);
-$palette-secondary-500: nth($palette-secondary, 6);
-$palette-secondary-600: nth($palette-secondary, 7);
-$palette-secondary-700: nth($palette-secondary, 8);
-$palette-secondary-800: nth($palette-secondary, 9);
-$palette-secondary-900: nth($palette-secondary, 10);
-$palette-secondary-A100: nth($palette-secondary, 11);
-$palette-secondary-A200: nth($palette-secondary, 12);
-$palette-secondary-A400: nth($palette-secondary, 13);
-$palette-secondary-A700: nth($palette-secondary, 14);
-
+$darkgrey: (
+  50 : #f0f3f5,
+  100 : #d9e2e6,
+  200 : #bfcfd6,
+  300 : #a5bbc6,
+  400 : #92adb9,
+  500 : #7f9ead,
+  600 : #7796a6,
+  700 : #6c8c9c,
+  800 : #628293,
+  900 : #4f7083,
+  A100 : #e5f6ff,
+  A200 : #b3e3ff,
+  A400 : #80d0ff,
+  A700 : #66c6ff,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #000000,
+    600 : #000000,
+    700 : #000000,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
 /* accent color teal*/
-$palette-accent: rgb(225, 245, 243) rgb(179, 229, 225) rgb(129, 212, 206) rgb(78, 194, 186) rgb(40, 181, 171) rgb(2, 168, 156) rgb(2, 160, 148) rgb(1, 151, 138) rgb(1, 141, 128) rgb(1, 125, 110) rgb(170, 255, 243) rgb(119, 255, 236) rgb(68, 255, 229) rgb(42, 255, 226);
+$teal: ( 50 : #e1f5f3,
+  100 : #b3e5e1,
+  200 : #81d4ce,
+  300 : #4ec2ba,
+  400 : #28b5ab,
+  500 : #02a89c,
+  600 : #02a094,
+  700 : #01978a,
+  800 : #018d80,
+  900 : #017d6e,
+  A100 : #aafff3,
+  A200 : #77ffec,
+  A400 : #44ffe5,
+  A700 : #2affe2,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #000000,
+    400 : #000000,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #000000,
+  )
+);
 
-$palette-accent-50: nth($palette-accent, 1);
-$palette-accent-100: nth($palette-accent, 2);
-$palette-accent-200: nth($palette-accent, 3);
-$palette-accent-300: nth($palette-accent, 4);
-$palette-accent-400: nth($palette-accent, 5);
-$palette-accent-500: nth($palette-accent, 6);
-$palette-accent-600: nth($palette-accent, 7);
-$palette-accent-700: nth($palette-accent, 8);
-$palette-accent-800: nth($palette-accent, 9);
-$palette-accent-900: nth($palette-accent, 10);
-$palette-accent-A100: nth($palette-accent, 11);
-$palette-accent-A200: nth($palette-accent, 12);
-$palette-accent-A400: nth($palette-accent, 13);
-$palette-accent-A700: nth($palette-accent, 14);
 
 /* warn color red*/
-$palette-warn: rgb(245, 228, 229) rgb(230, 188, 189) rgb(214, 143, 145) rgb(197, 98, 101) rgb(184, 64, 68) rgb(172, 30, 35) rgb(165, 26, 31) rgb(155, 22, 26) rgb(146, 18, 21) rgb(130, 10, 12) rgb(255, 178, 178) rgb(255, 127, 128) rgb(255, 76, 77) rgb(255, 50, 52);
-
-$palette-warn-50: nth($palette-warn, 1);
-$palette-warn-100: nth($palette-warn, 2);
-$palette-warn-200: nth($palette-warn, 3);
-$palette-warn-300: nth($palette-warn, 4);
-$palette-warn-400: nth($palette-warn, 5);
-$palette-warn-500: nth($palette-warn, 6);
-$palette-warn-600: nth($palette-warn, 7);
-$palette-warn-700: nth($palette-warn, 8);
-$palette-warn-800: nth($palette-warn, 9);
-$palette-warn-900: nth($palette-warn, 10);
-$palette-warn-A100: nth($palette-warn, 11);
-$palette-warn-A200: nth($palette-warn, 12);
-$palette-warn-A400: nth($palette-warn, 13);
-$palette-warn-A700: nth($palette-warn, 14);
+$red: (
+  50 : #f5e4e5,
+  100 : #e6bcbd,
+  200 : #d68f91,
+  300 : #c56265,
+  400 : #b84044,
+  500 : #ac1e23,
+  600 : #a51a1f,
+  700 : #9b161a,
+  800 : #921215,
+  900 : #820a0c,
+  A100 : #ffb2b2,
+  A200 : #ff7f80,
+  A400 : #ff4c4d,
+  A700 : #ff3234,
+  contrast: (
+    50 : #000000,
+    100 : #000000,
+    200 : #000000,
+    300 : #ffffff,
+    400 : #ffffff,
+    500 : #ffffff,
+    600 : #ffffff,
+    700 : #ffffff,
+    800 : #ffffff,
+    900 : #ffffff,
+    A100 : #000000,
+    A200 : #000000,
+    A400 : #000000,
+    A700 : #ffffff,
+  )
+);
 
 /* lighter light grey*/
-$palette-light: rgb(253, 253, 253) rgb(250, 250, 250) rgb(247, 247, 247) rgb(243, 244, 244) rgb(241, 241, 241) rgb(238, 239, 239) rgb(236, 237, 237) rgb(233, 235, 235) rgb(231, 232, 232) rgb(226, 228, 228) rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255) rgb(255, 255, 255);
+$lightgrey: (
+    50 : #fdfdfd,
+    100 : #fafafa,
+    200 : #f7f7f7,
+    300 : #f3f4f4,
+    400 : #f1f1f1,
+    500 : #eeefef,
+    600 : #eceded,
+    700 : #e9ebeb,
+    800 : #e7e8e8,
+    900 : #e2e4e4,
+    A100 : #ffffff,
+    A200 : #ffffff,
+    A400 : #ffffff,
+    A700 : #ffffff,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #000000,
+        600 : #000000,
+        700 : #000000,
+        800 : #000000,
+        900 : #000000,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
 
-$palette-light-50: nth($palette-light, 1);
-$palette-light-100: nth($palette-light, 2);
-$palette-light-200: nth($palette-light, 3);
-$palette-light-300: nth($palette-light, 4);
-$palette-light-400: nth($palette-light, 5);
-$palette-light-500: nth($palette-light, 6);
-$palette-light-600: nth($palette-light, 7);
-$palette-light-700: nth($palette-light, 8);
-$palette-light-800: nth($palette-light, 9);
-$palette-light-900: nth($palette-light, 10);
-$palette-light-A100: nth($palette-light, 11);
-$palette-light-A200: nth($palette-light, 12);
-$palette-light-A400: nth($palette-light, 13);
-$palette-light-A700: nth($palette-light, 14);
+$vera-primary: mat-palette($darkblue);
+$vera-accent: mat-pallette($teal);
+$vera-warn: mat-pallette($red);
+$theme:mat-theme($vera-primary,$vera-accent,$vera-warn);
 

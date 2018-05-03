@@ -1,31 +1,40 @@
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
+import { ApiService } from '../services/api.service';
+import 'rxjs/add/operator/map';
+import { Observable } from 'rxjs/Observable';
+import { environment } from '../../environments/environment';
 
+const API_URL = environment.apiUrl;
 @Component({
   selector: 'app-mailing',
   templateUrl: './mailing.component.html',
-  styleUrls: ['./mailing.component.scss']
+  styleUrls: ['./mailing.component.scss'],
+  providers: [ApiService]
 })
 export class MailingComponent implements OnInit {
   http: Http;
-  reportName: string;
-  report: Array<any>;
+  public reportName: string;
+  report: any;
   // visibility of checked items
   statusCh: string = "none";
   serviceCh: string = "none";
   // radio inputs
   //serviceType = "both";
   //status = "active";
-  serviceType: string;
-  status: string;
+  public serviceType: string;
+  public status: string;
+
+  received = "none";
+
   // list of attribute options
-  checks = [
-    { name: "Status", isChecked: false, value: this.status },
-    { name: "Service", isChecked: false, value: this.serviceType  }
+  public checks = [
+    { display: "Status", isChecked: false, value: this.status },
+    { display: "Service", isChecked: false, value: this.serviceType  }
   ]
-  filters = [
-    { name: "Status", value: this.status },
-    { name: "Service", value: this.serviceType }
+  public filters = [
+    { display: "Status", value: this.status },
+    { display: "Service", value: this.serviceType }
   ]
 
   
@@ -71,17 +80,22 @@ export class MailingComponent implements OnInit {
       headers: pageHeaders
     });
     let body = JSON.stringify(this.filters);
-    //console.log("[DEBUG] body:", body);
+    console.log("[DEBUG] body:", body);
 		// The post request which takes parameters of address, body, options
-    //this.http.post('/getreport', body, options)
-     // .map((res) => res.json())
-     // .subscribe((data) => this.waitForHttp(data));
+    this.http.get(API_URL + '/customers')
+      .map((res) => res.json())
+      .subscribe((data) => this.waitForHttp(data));
+    this.received = "block";
   }
 
-	private waitForHttp(data: Array<any>) {
+	private waitForHttp(data: any) {
   if (data !== undefined) {
     console.log("There is a report");
-    this.report = data as Array<any>;
+    this.report = JSON.stringify(data);
+    this.report = this.report.replace(/{/g,"");
+    this.report = this.report.replace(/]/g, "");
+    this.report = this.report.replace(/\[/g, "");
+    this.report = this.report.split("},");
     console.log("After reassignment:" + this.report);
   }
 }
