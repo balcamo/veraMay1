@@ -1,6 +1,3 @@
-@import '~@angular/material/theming';
-
-@include mat-core();
 /* primary color dark blue */
 $darkblue: (
   50 : #e3e7e8,
@@ -170,9 +167,4 @@ $lightgrey: (
         A700 : #000000,
     )
 );
-
-$vera-primary: mat-palette($darkblue);
-$vera-accent: mat-pallette($teal);
-$vera-warn: mat-pallette($red);
-$theme:mat-theme($vera-primary,$vera-accent,$vera-warn);
 

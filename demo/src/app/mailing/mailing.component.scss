@@ -1,5 +1,5 @@
 
-@import "../../theme";
+//@import "../../theme";
 
 mat-accordion {
   align-content: center;
@@ -7,8 +7,8 @@ mat-accordion {
 
 mat-expansion-panel {
   width: 80vw;
-  background-color: mat-color($vera-primary);
-  color: mat-color($darkgrey);
+  //background-color: mat-color($vera-primary);
+  //color: mat-color($darkgrey);
 }
 
 mat-checkbox {
@@ -25,7 +25,7 @@ mat-checkbox {
 }
 
 .container {
-  background-color: $vera-primary;
+  //background-color: $vera-primary;
   margin:2vh;
   padding-bottom:.5vh;
 }
@@ -33,9 +33,9 @@ div {
   align-content:center;
 }
 button {
-  color: mat-color($vera-accent);
+ // color: mat-color($vera-accent);
   font-weight: bold;
   font-size: medium;
   border: 2px;
-  border-color: mat-color($vera-accent);
+ // border-color: mat-color($vera-accent);
 }
