@@ -1,5 +1,5 @@
 
-//@import "../../theme";
+@import "../../theme";
 
 mat-accordion {
   align-content: center;
@@ -7,8 +7,8 @@ mat-accordion {
 
 mat-expansion-panel {
   width: 80vw;
-  //background-color: mat-color($vera-primary);
-  //color: mat-color($darkgrey);
+  background-color: map-get($darkblue,500);
+  color: map-get($darkgrey,500);
 }
 
 mat-checkbox {
@@ -25,17 +25,18 @@ mat-checkbox {
 }
 
 .container {
-  //background-color: $vera-primary;
-  margin:2vh;
-  padding-bottom:.5vh;
+  background-color: map-get($lightgrey,900);
+  margin: 2vh;
+  padding-bottom: .5vh;
+  color: map-get($darkblue,500);
 }
 div {
   align-content:center;
 }
 button {
- // color: mat-color($vera-accent);
+  color: map-get($teal,500);
   font-weight: bold;
   font-size: medium;
   border: 2px;
- // border-color: mat-color($vera-accent);
+  border-color: map-get($teal,500);
 }

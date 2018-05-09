@@ -1,5 +1,4 @@
-<div>
-  <script> @import '../../theme';</script>
+<div style="align-content:center;">
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -20,7 +19,7 @@
   <div [ngStyle]="{'display':statusCh}" class="container">
     <p>Status</p>
     <mat-radio-group class="radio-group" [(ngModel)]="status">
-      <mat-radio-button color="$palette-accent-500" class="example-margin" value="active">Active</mat-radio-button>
+      <mat-radio-button class="example-margin" value="active">Active</mat-radio-button>
       <mat-radio-button class="example-margin" value="disabled">Disabled</mat-radio-button>
       <mat-radio-button class="example-margin" value="deleted">Deleted</mat-radio-button>
       <mat-radio-button class="example-margin" value="all">All</mat-radio-button>

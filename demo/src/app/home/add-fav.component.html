@@ -1,0 +1,13 @@
+
+  <h1 mat-dialog-title>select favorites</h1>
+  <mat-dialog-content>
+   <mat-checkbox *ngFor="let dat of data"
+                    class="example-margin" [(ngModel)]="dat.isChecked"
+                    style="padding:.5vw"
+                 >{{ dat.display }}</mat-checkbox>
+  </mat-dialog-content>
+  <mat-dialog-actions>
+    <button mat-button [mat-dialog-close]="data" >Add</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+  </mat-dialog-actions>
+

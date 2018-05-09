@@ -1,32 +1,22 @@
 /* You can add global styles to this file, and also import other style files */
 @import url('https://fonts.googleapis.com/css?family=PT+Sans:300,700');
-@import '../node_modules/@angular/material/_theming';
-
 @import './theme';
-
-@include mat-core();
-
-$vera-primary: mat-palette($darkblue);
-$vera-accent: mat-pallette($teal);
-$vera-warn: mat-pallette($red);
-$vera-theme: mat-light-theme($vera-primary,$vera-accent,$vera-warn);
-
-@include angular-material-theme($vera-theme);
 
 body {
   text-align: center;
-  //background: $vera-primary;
+  background-color: map-get($darkblue,500);
   padding: 3em;
   font-family: 'PT Sans', 'Arial';
-  //color: $darkgrey;
+  color: map-get($darkgrey,500);
 }
 img {
   width: 215px;
   height:auto;
 }
 button {
-  //background: $vera-primary;
-  padding-top:10vh;
+  background-color: map-get($darkblue,500);
+  padding-top: 10vh;
+  color: map-get($teal,500);
 }
 ul {
   list-style-type:none;
@@ -41,7 +31,7 @@ ul li a {
   font-size: 1.5em;
 }
 a {
-  //color: $vera-accent;
+  color: map-get($teal,500);
   text-decoration: none;
 }
 
