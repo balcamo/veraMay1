@@ -14,6 +14,7 @@ import {
   MatInputModule,
   MatSelectModule,
   MatDialogModule,
+  MatTooltipModule
  } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -71,7 +72,7 @@ import { OutageComponent } from './outage/outage.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
- 
+    MatTooltipModule,
 
   ],
   exports: [
@@ -86,7 +87,7 @@ import { OutageComponent } from './outage/outage.component';
     MatInputModule,
     MatSelectModule,
     MatDialogModule,
-
+    MatTooltipModule,
   ],
   providers: [ApiService, ReportServiceService],
   bootstrap: [AppComponent]

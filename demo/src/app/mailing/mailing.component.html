@@ -17,7 +17,7 @@
 
   </mat-accordion>
   <div [ngStyle]="{'display':statusCh}" class="container">
-    <p>Status</p>
+    <p><span matTooltip="The status of the account" matTooltipPosition="after">Status</span></p>
     <mat-radio-group class="radio-group" [(ngModel)]="status">
       <mat-radio-button class="example-margin" value="active">Active</mat-radio-button>
       <mat-radio-button class="example-margin" value="disabled">Disabled</mat-radio-button>
@@ -27,7 +27,7 @@
   </div>
 
   <div [ngStyle]="{'display':serviceCh}" class="container">
-    <p>Service Type</p>
+    <p><span matTooltip="The type of service Vera provides for the account" matTooltipPosition="after">Service Type</span></p>
     <mat-radio-group class="radio-group" [(ngModel)]="serviceType">
       <mat-radio-button class="example-margin" value="water">Water</mat-radio-button>
       <mat-radio-button class="example-margin" value="eletric">Eletric</mat-radio-button>
