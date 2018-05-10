@@ -57,13 +57,9 @@ ngOnInit() {
     var i = 0;
     for (i; i < this.options.length; i++) {
       if (this.options[i].isChecked) {
-        this.favorites.push(this.options[i]);
+        this.options[i].value = "block"
         this.total = this.total + 1;
       }
-    }
-    if (this.total > 0) {
-      console.log("total is more than 0");
-      this.modalVisibility = "block"
     }
   }
 
