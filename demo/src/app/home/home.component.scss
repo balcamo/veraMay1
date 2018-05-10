@@ -5,13 +5,16 @@
   width:50% auto;
 }
 .mat-grid-list {
+ margin:auto;
+ width:50%;
 
 }
 .mat-grid-tile {
-  display: flex;
-  text-align: center;
-  margin-left: 12vw;
+  margin: auto;
+  width: 100%;
 
+  text-align: center;
+  background-color: map-get($darkgrey,300);
 }
 .color-light {
   background-color: map-get($lightgrey,500);

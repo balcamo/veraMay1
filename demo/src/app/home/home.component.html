@@ -3,16 +3,20 @@
     <p>Your Favorite Links!</p>
   </div>
 </div>
+<br />
+<br />
 <button mat-raised-button (click)="openModal()">Add Favorites</button>
-<div [ngStyle]="{'display':modalVisibility}">
+<br />
+<br />
 <mat-grid-list cols="4" rowHeight="50px">
 
-  <mat-grid-tile *ngFor="let favorite of favorites">
-    <a routerLink="./{{tile.display}}">{{tile.display}}</a>
+  <mat-grid-tile *ngFor="let opt of options" [colspan]="opt.col"
+                 [rowspan]="opt.row"
+                 [ngStyle]="{'display':opt.value}">
+    <a  routerLink="./{{opt.display}}">{{opt.display}}</a>
   </mat-grid-tile>
-
 </mat-grid-list>
-</div>
+
 
 
 

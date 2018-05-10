@@ -4,6 +4,8 @@ import { FormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { HttpClientModule } from '@angular/common/http';
+import { LocalStorageModule } from 'angular-2-local-storage';
+
 
 /* peices for material */
 import { CommonModule } from '@angular/common';
@@ -50,6 +52,10 @@ import { OutageComponent } from './outage/outage.component';
 
   ],
   imports: [
+    LocalStorageModule.withConfig({
+      prefix: 'my-app',
+      storageType: 'localStorage'
+    }),
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,

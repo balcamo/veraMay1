@@ -1,6 +1,9 @@
 import { Component, OnInit, Inject, EventEmitter } from '@angular/core';
 import { MatDialog, MatDialogRef, MAT_DIALOG_DATA } from "@angular/material";
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { LocalStorageService } from "angular-2-local-storage";
+import { User } from '../vera/vera.employee';
+import '../../theme.scss';
 
 @Component({
   selector: 'app-home',
@@ -8,29 +11,28 @@ import { FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-
+  user: User;
   favorites: any;
-  total: number = 0;
-  
-  modalVisibility = "none"
-  about: string;
-  home: string;
-  mailing: string;
-  outage: string;
-  safety: string;
+  modalVisibility = "none";
+  about = "none";
+  mailing = "none";
+  outage = "none";
+  safety = "none";
   public options = [
-    { display: "about", isChecked: false, value: this.about },
-    { display: "home", isChecked: false, value:this.home  },
-    { display: "mailing", isChecked: false, value: this.mailing },
-    { display: "outage", isChecked: false, value: this.outage },
-    { display: "safety", isChecked: false, value: this.safety },
+    { display: "about", isChecked: false, value: this.about , col:0 , row:0},
+    { display: "mailing", isChecked: false, value: this.mailing, col: 0, row: 0 },
+    { display: "outage", isChecked: false, value: this.outage, col: 0, row: 0 },
+    { display: "safety", isChecked: false, value: this.safety, col: 0, row: 0 },
   ];
 
-  constructor(private dialog: MatDialog) { }
+  constructor(private dialog: MatDialog, private localStorageService: LocalStorageService ) { }
 
-ngOnInit() {
- 
+  ngOnInit() {
+    this.favorites = JSON.parse(localStorage.getItem('currentUser'));
+    if (this.favorites.length > 0) {
+      this.options = this.favorites;
+    }
+
   }
 
   
@@ -47,7 +49,7 @@ ngOnInit() {
 
     dialogRef.afterClosed().subscribe(result => {
       console.log('The dialog was closed');
-      this.options = result;
+      this.favorites = result;
       console.log(result);
       this.getSelected();
     });
@@ -55,12 +57,26 @@ ngOnInit() {
   }
   private getSelected() {
     var i = 0;
-    for (i; i < this.options.length; i++) {
-      if (this.options[i].isChecked) {
-        this.options[i].value = "block"
-        this.total = this.total + 1;
+    if (this.favorites != undefined) {
+      for (i; i < this.favorites.length; i++) {
+        if (this.options[i].isChecked) {
+          this.options[i].value = "block"
+          this.options[i].col = 3;
+          this.options[i].row = 2;
+        } else {
+          this.options[i].value = "none"
+          this.options[i].col = 0;
+          this.options[i].row = 0;
+        }
       }
+      this.saveFavorites();
     }
+  }
+
+  private saveFavorites() {
+    console.log('curent favs selected' + JSON.stringify(this.options));
+    
+    localStorage.setItem('currentUser', JSON.stringify(this.options));
   }
 
 }
