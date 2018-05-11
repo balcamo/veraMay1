@@ -1,0 +1,22 @@
+
+<h1 mat-dialog-title>Outage Report</h1>
+<mat-dialog-content>
+  <mat-form-field>
+    <input matInput placeholder="Name">
+  </mat-form-field>
+  <br />
+  <mat-form-field>
+    <input matInput placeholder="Address">
+  </mat-form-field>
+  <p>Type of Outage</p>
+    <mat-radio-group [(ngModel)]="typeOutage">
+      <mat-radio-button value="water">Water</mat-radio-button>
+      <mat-radio-button value="eletric">Eletric</mat-radio-button>
+      <mat-radio-button value="both">Both</mat-radio-button>
+    </mat-radio-group>
+
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button mat-button [mat-dialog-close]="data">submit</button>
+  <button mat-button type="button" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

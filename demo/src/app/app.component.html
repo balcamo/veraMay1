@@ -1,8 +1,15 @@
-<!--The content below is only a placeholder and can be replaced.-->
-
 <ul>
-  <li><button mat-button><a routerLink=""><img src="../assets/veraLogo.png" /></a></button></li> <!-- Home button-->
-  <li><button mat-button><a routerLink="./about">About</a></button></li> <!-- Home button-->
+  <li>
+    <button mat-button>
+      <span matTooltip="Vera's main site" matTooltipPosition="below">
+        <a target="_blank" href="http://verawaterandpower.com/">
+          <img src="../assets/veraLogo.png" />
+        </a>
+      </span>
+    </button>
+  </li> <!-- Vera main page button-->
+  <li><button mat-button><a routerLink="">Home</a></button></li> <!-- Home button-->
+  <li><button mat-button (click)="openModal()"><a>Outage Report</a></button></li><!-- outage report -->
   <li><button mat-button><a routerLink="./safety">Safety</a></button></li>
 
 </ul>

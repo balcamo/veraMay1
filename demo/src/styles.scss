@@ -17,6 +17,7 @@ button {
   background-color: map-get($darkblue,500);
   padding-top: 10vh;
   color: map-get($teal,500);
+  text-decoration: none;
 }
 ul {
   list-style-type:none;

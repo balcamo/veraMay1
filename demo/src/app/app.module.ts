@@ -14,7 +14,8 @@ import {
   MatInputModule,
   MatSelectModule,
   MatDialogModule,
-  MatTooltipModule
+  MatTooltipModule,
+  MatFormFieldModule
  } from '@angular/material';
 import { MatGridListModule } from '@angular/material/grid-list';
 import { MatCheckboxModule } from '@angular/material/checkbox';
@@ -28,7 +29,7 @@ import { AppRoutingModule } from './app-routing.module';
 
 
 /* the client pages */
-import { AppComponent } from './app.component';
+import { AppComponent, OutageReportComponent } from './app.component';
 import { HomeComponent, AddFavDialogComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SafetyComponent } from './safety/safety.component';
@@ -41,6 +42,7 @@ import { OutageComponent } from './outage/outage.component';
   entryComponents: [
     AddFavDialogComponent,
     HomeComponent,
+    OutageReportComponent,
     ],
   declarations: [
     AppComponent,
@@ -50,6 +52,7 @@ import { OutageComponent } from './outage/outage.component';
     MailingComponent,
     OutageComponent,
     AddFavDialogComponent,
+    OutageReportComponent,
 
   ],
   imports: [
@@ -73,6 +76,7 @@ import { OutageComponent } from './outage/outage.component';
     MatSelectModule,
     MatDialogModule,
     MatTooltipModule,
+    MatFormFieldModule,
 
   ],
   exports: [
@@ -88,6 +92,7 @@ import { OutageComponent } from './outage/outage.component';
     MatSelectModule,
     MatDialogModule,
     MatTooltipModule,
+    MatFormFieldModule,
   ],
   providers: [ApiService, ReportServiceService],
   bootstrap: [AppComponent]
