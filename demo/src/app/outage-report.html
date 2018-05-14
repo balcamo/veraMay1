@@ -1,22 +1,37 @@
 
 <h1 mat-dialog-title>Outage Report</h1>
+
 <mat-dialog-content>
-  <mat-form-field>
-    <input matInput placeholder="Name">
-  </mat-form-field>
-  <br />
-  <mat-form-field>
-    <input matInput placeholder="Address">
-  </mat-form-field>
-  <p>Type of Outage</p>
-    <mat-radio-group [(ngModel)]="typeOutage">
+  <div [formGroup]="form">
+    <mat-form-field>
+      <input matInput formControlName="name" placeholder="Name">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <input matInput formControlName="address" placeholder="Address of Outage">
+    </mat-form-field>
+    <br />
+    <mat-form-field>
+      <textarea formControlName="circumstances" matInput placeholder="What Happened"></textarea>
+    </mat-form-field>
+    <p>Type of Outage</p>
+    <mat-radio-group formControlName="typeOutage">
       <mat-radio-button value="water">Water</mat-radio-button>
       <mat-radio-button value="eletric">Eletric</mat-radio-button>
       <mat-radio-button value="both">Both</mat-radio-button>
     </mat-radio-group>
-
+  
+    <br /><br />
+    <p>Phone Number</p>
+  
+    <input class="area" formControlName="area" size="3" maxlength="3">
+    <span>&ndash;</span>
+    <input class="exchange" formControlName="exchange" size="3" maxlength="3">
+    <span>&ndash;</span>
+    <input class="subscriber" formControlName="subscriber" size="4" maxlength="4">
+  </div>
 </mat-dialog-content>
 <mat-dialog-actions>
-  <button mat-button [mat-dialog-close]="data">submit</button>
+  <button mat-button (click)="saveForm()" [mat-dialog-close]="form">submit</button>
   <button mat-button type="button" mat-dialog-close>Cancel</button>
 </mat-dialog-actions>
