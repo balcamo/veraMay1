@@ -104,7 +104,7 @@ import { OutageComponent } from './outage/outage.component';
     MatFormFieldModule,
     MatIconModule,
     ReactiveFormsModule,
-
+    MatMenuModule,
 
   ],
   exports: [

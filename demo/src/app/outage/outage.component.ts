@@ -8,13 +8,5 @@ import { Component } from '@angular/core';
 })
 export class OutageComponent {
 
-  favoriteSeason: string;
-
-  seasons = [
-    'Winter',
-    'Spring',
-    'Summer',
-    'Autumn',
-  ];
 
 }

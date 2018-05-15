@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
 import { ApiService } from '../services/api.service';
-import 'rxjs/add/operator/map';
+
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 
@@ -17,60 +17,79 @@ export class MailingComponent implements OnInit {
   public reportName: string;
   report: any;
   // visibility of checked items
-  statusCh: string = "none";
-  serviceCh: string = "none";
+  emailCh: string = "none";
+  postalCh: string = "none";
+  waterCh: string = "none";
+  eletricCh: string = "none";
   // radio inputs
   //serviceType = "both";
   //status = "active";
+  public email: string;
+  public postal: string;
   public serviceType: string;
-  public status: string;
-
+  public waterPropertyType: string;
+  public eletricPropertyType: string;
+  public residentType: string;
   received = "none";
+  filter: any;
 
   // list of attribute options
   public checks = [
-    { display: "Status", isChecked: false, value: this.status },
-    { display: "Service", isChecked: false, value: this.serviceType  }
+    { display: "Email", isChecked: false, value: this.email },
+    { display: "Postal Mail", isChecked: false, value: this.postal  }
   ]
-  public filters = [
-    { display: "Status", value: this.status },
-    { display: "Service", value: this.serviceType }
-  ]
-
-  
-
-
 
   constructor(http: Http) {
     this.http = http;
   }
 
-  ngOnInit() {
-  }
-
-
+  ngOnInit() { }
+  
   public showSelected() {
-    console.log("serviceType is currently " + this.serviceType);
+    console.log("email is currently " + this.email);
     if (this.checks[0].isChecked) {
-      this.statusCh = "block";
+      this.emailCh = "block";
+      this.email = "getEmail";
     } else {
-      this.statusCh = "none";
+      this.emailCh = "none";
     }
     if (this.checks[1].isChecked) {
-      this.serviceCh = "block";
+      this.postalCh = "block";
+      this.postal = "getPostal";
     } else {
-      this.serviceCh = "none";
+      this.postalCh = "none";
+    }
+  }
+  public getServiceType(service: string) {
+    if (service == "water") {
+      this.waterCh = "block";
+      this.eletricCh = "none";
+    }
+    if (service == "eletric") {
+      this.eletricCh = "block";
+      this.waterCh = "none";
+    }
+    if (service == "both") {
+      this.waterCh = "block";
+      this.eletricCh = "block";
     }
   }
  
   public getReport() {
-    var uploadObj = { key: this.reportName };
+    // TODO : make REST call
+    console.log("get emial? " + this.email);
+    console.log("get postal mailing list? " + this.postal);
+    console.log("serviceType " + this.serviceType);
+    console.log("waterPropertyType " + this.waterPropertyType);
+    console.log("eletricPropertyType " + this.eletricPropertyType);
+    console.log("residentType " + this.residentType);
+    //var uploadObj = { key: this.reportName };
     // Initialize parameters for URL
-    let params: URLSearchParams = new URLSearchParams();
+    /*let params: URLSearchParams = new URLSearchParams();
     // Saves key/value pairs to URL query string
-    for (let key in uploadObj) {
-      params.set(key, uploadObj[key]);
-    }
+    //for (let key in uploadObj) {
+      //params.set(key, uploadObj[key]);
+    //}
     // Create the headers for the page
     var pageHeaders = new Headers();
     pageHeaders.append('Content-Type', 'application/json');
@@ -79,7 +98,8 @@ export class MailingComponent implements OnInit {
       search: params,
       headers: pageHeaders
     });
-    let body = JSON.stringify(this.filters);
+    this.filter = {};
+    let body = JSON.stringify(this.filter);
     console.log("[DEBUG] body:", body);
 		// The post request which takes parameters of address, body, options
     this.http.get(API_URL + '/customers')
@@ -97,7 +117,7 @@ export class MailingComponent implements OnInit {
     this.report = this.report.replace(/\[/g, "");
     this.report = this.report.split("},");
     console.log("After reassignment:" + this.report);
-  }
+  }*/
 }
 }
 

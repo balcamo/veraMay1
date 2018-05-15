@@ -1,12 +1,30 @@
-.example-radio-group {
+@import '../../theme';
+
+.outage-map {
   display: inline-flex;
-  flex-direction: column;
+  background-color: map-get($darkblue,300);
+  text-align: center;
+  width:80%;
 }
-
-.example-radio-button {
-  margin: 5px;
+p{
+  text-align:center;
 }
-
-.example-selected-value {
-  margin: 15px 0;
+img{
+  width:80%;
+}
+.side-menu {
+  float:left;
+  display:inline;
+  background-color: map-get($darkblue,700);
+  color: map-get($teal,500);
+  width: 10%;
+  text-align:center;
+}
+.mat-menu {
+  background-color: map-get($darkblue,300);
+  color: map-get($teal,500);
+}
+.mat-menu-item {
+  background-color: map-get($darkblue,300);
+  color: map-get($teal,500);
 }

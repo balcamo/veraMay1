@@ -20,9 +20,6 @@ mat-checkbox {
   display: block;
   flex-direction: row;
 }
-.example-margin {
-  margin: 5px;
-}
 
 .container {
   align-content:center;
@@ -41,4 +38,15 @@ button {
   font-size: medium;
   border: 2px;
   border-color: map-get($teal,500);
+}
+
+.leftColumn {
+  align-content:center;
+  min-width:275px;
+  max-width:350px;
+  display:block;
+}
+.rightColumn{
+  display:inline-flex;
+
 }

@@ -1,4 +1,5 @@
-<div style="align-content:center;">
+
+<div class="leftColumn">
   <mat-accordion>
     <mat-expansion-panel>
       <mat-expansion-panel-header>
@@ -17,21 +18,36 @@
 
   </mat-accordion>
   <div>
-    <div [ngStyle]="{'display':statusCh}" class="container">
+    <div [ngStyle]="{'display':postalCh}" class="container">
       <p><span matTooltip="The status of the account" matTooltipPosition="after">Status</span></p>
-      <mat-radio-group class="radio-group" [(ngModel)]="status">
-        <mat-radio-button class="example-margin" value="active">Active</mat-radio-button>
-        <mat-radio-button class="example-margin" value="disabled">Disabled</mat-radio-button>
-        <mat-radio-button class="example-margin" value="deleted">Deleted</mat-radio-button>
-        <mat-radio-button class="example-margin" value="all">All</mat-radio-button>
+      <mat-radio-group class="radio-group" [(ngModel)]="serviceType">
+        <mat-radio-button (change)="getServiceType('water')" class="example-margin" value="water">Water</mat-radio-button>
+        <mat-radio-button (change)="getServiceType('eletric')" class="example-margin" value="eletric">Eletric</mat-radio-button>
+        <mat-radio-button (change)="getServiceType('both')" class="example-margin" value="both">Both</mat-radio-button>
       </mat-radio-group>
     </div>
-
-    <div [ngStyle]="{'display':serviceCh}" class="container">
-      <p><span matTooltip="The type of service Vera provides for the account" matTooltipPosition="after">Service Type</span></p>
-      <mat-radio-group class="radio-group" [(ngModel)]="serviceType">
-        <mat-radio-button class="example-margin" value="water">Water</mat-radio-button>
-        <mat-radio-button class="example-margin" value="eletric">Eletric</mat-radio-button>
+    <!--water customers-->
+    <div [ngStyle]="{'display':waterCh}" class="container">
+      <p><span matTooltip="Type of property for water customers" matTooltipPosition="after">Water Property Type</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="waterPropertyType">
+        <mat-radio-button class="example-margin" value="residential">Residential</mat-radio-button>
+        <mat-radio-button class="example-margin" value="residentialBooster">Residential Booster</mat-radio-button>
+        <mat-radio-button class="example-margin" value="general">General</mat-radio-button>
+        <mat-radio-button class="example-margin" value="generalBooster">General Booster</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <!--eletric customers-->
+    <div [ngStyle]="{'display':eletricCh}" class="container">
+      <p><span matTooltip="Type of property for eletric customers" matTooltipPosition="after">Eletric Property Type</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="eletricPropertyType">
+        <mat-radio-button class="example-margin" value="residential">Residential</mat-radio-button>
+        <mat-radio-button class="example-margin" value="commercial">Commercial</mat-radio-button>
+        <mat-radio-button class="example-margin" value="both">Both</mat-radio-button>
+      </mat-radio-group>
+      <p><span matTooltip="The type of resident at the address" matTooltipPosition="after">Type of Resident</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="residentType">
+        <mat-radio-button class="example-margin" value="owner">Owner</mat-radio-button>
+        <mat-radio-button class="example-margin" value="tennent">Tennent</mat-radio-button>
         <mat-radio-button class="example-margin" value="both">Both</mat-radio-button>
       </mat-radio-group>
     </div>
@@ -47,5 +63,8 @@
       </tr>
     </table>
   </div>
-
 </div>
+<div class="rightColumn">
+  <p>placeholder for other content</p>
+</div>
+
