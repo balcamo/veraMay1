@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
 
 
-const API_URL = environment.apiUrl;
+//const API_URL = environment.apiUrl;
 
 @Injectable()
 export class ApiService {
@@ -16,7 +16,7 @@ export class ApiService {
   // API: GET /customers
   public getAllCustomers() {
     return this.http
-      .get(API_URL + '/customers')
+      .get('/customers')
       .map(response => {
         const customers = response.json();
         return customers.map((customer) => new Customer());
@@ -32,7 +32,7 @@ export class ApiService {
   // API: GET /customers/:id
   public getCustomerByName(customerName: string) {
     return this.http
-      .get(API_URL + '/customers/' + customerName)
+      .get('/customers/' + customerName)
       .map(response => {
         return response.json();
       })  }

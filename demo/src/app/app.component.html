@@ -1,19 +1,36 @@
+<link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+<div class="rightColumn">
+  <button class="material-icons" mat-icon-button [matMenuTriggerFor]="menu">
+    <i class="material-icons">settings</i>
+  </button>
+  <mat-menu #menu="matMenu">
+    <mat-checkbox *ngFor="let page of pages"
+                  class="example-margin" [(ngModel)]="page.isChecked">
+      {{ page.display }}
+    </mat-checkbox>
+  </mat-menu>
+</div>
+<div class="leftColumn">
+  <ul>
+    <li>
+      <button mat-button>
+        <span matTooltip="Vera's main site" matTooltipPosition="below">
+          <a target="_blank" href="http://verawaterandpower.com/">
+            <img src="../assets/veraLogo.png" />
+          </a>
+        </span>
+      </button>
+    </li> <!-- Vera main page button-->
+    <li><button mat-button><a routerLink="">Home</a></button></li> <!-- Home button-->
+    <li><button mat-button (click)="openModal()"><a>Outage Report</a></button></li><!-- outage report -->
+    <li><button mat-button><a routerLink="./safety">Safety</a></button></li>
+  </ul>
+</div>
 
-<ul>
-  <li>
-    <button mat-button>
-      <span matTooltip="Vera's main site" matTooltipPosition="below">
-        <a target="_blank" href="http://verawaterandpower.com/">
-          <img src="../assets/veraLogo.png" />
-        </a>
-      </span>
-    </button>
-  </li> <!-- Vera main page button-->
-  <li><button mat-button><a routerLink="">Home</a></button></li> <!-- Home button-->
-  <li><button mat-button (click)="openModal()"><a>Outage Report</a></button></li><!-- outage report -->
-  <li><button mat-button><a routerLink="./safety">Safety</a></button></li>
+<div class="content" style="right:80%;">
 
-</ul>
 
+</div>
 
 <router-outlet></router-outlet>

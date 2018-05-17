@@ -15,8 +15,16 @@ input {
   font: inherit;
   text-align: center;
 }
+mat-checkbox {
+  margin: auto;
+  padding: 1vw;
+}
 
-
+.settings {
+  text-align:right;
+  width:15px;
+  height:auto;
+}
 :host.floating span {
   opacity: 1;
 }
@@ -28,4 +36,17 @@ mat-form-field {
 div.span {
   opacity: 0;
   transition: opacity 200ms;
+}
+.leftColumn {
+  display:inline-flex;
+  align-content: center;
+  left:100%;
+  min-width: 275px;
+  max-width: 350px;
+  display: block;
+}
+
+.rightColumn {
+  right: 100%;
+  display: inline-flex;
 }

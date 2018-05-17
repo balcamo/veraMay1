@@ -4,6 +4,7 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs'
+import { MatIconRegistry } from '@angular/material';
 
 @Component({
   selector: 'app-root',
@@ -11,6 +12,10 @@ import { Subject } from 'rxjs'
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  pages = [
+    { display: "Email", isChecked: false },
+    { display: "Postal Mail", isChecked: false }
+  ]
   title = 'app';
   constructor(private dialog: MatDialog) { }
 

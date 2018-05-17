@@ -5,7 +5,7 @@ import { ApiService } from '../services/api.service';
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
 
-const API_URL = environment.apiUrl;
+//const API_URL = environment.apiUrl;
 @Component({
   selector: 'app-mailing',
   templateUrl: './mailing.component.html',
@@ -83,13 +83,13 @@ export class MailingComponent implements OnInit {
     console.log("waterPropertyType " + this.waterPropertyType);
     console.log("eletricPropertyType " + this.eletricPropertyType);
     console.log("residentType " + this.residentType);
-    //var uploadObj = { key: this.reportName };
+    var uploadObj = { key: this.reportName };
     // Initialize parameters for URL
-    /*let params: URLSearchParams = new URLSearchParams();
+    let params: URLSearchParams = new URLSearchParams();
     // Saves key/value pairs to URL query string
-    //for (let key in uploadObj) {
-      //params.set(key, uploadObj[key]);
-    //}
+    for (let key in uploadObj) {
+      params.set(key, uploadObj[key]);
+    }
     // Create the headers for the page
     var pageHeaders = new Headers();
     pageHeaders.append('Content-Type', 'application/json');
@@ -98,26 +98,48 @@ export class MailingComponent implements OnInit {
       search: params,
       headers: pageHeaders
     });
-    this.filter = {};
-    let body = JSON.stringify(this.filter);
-    console.log("[DEBUG] body:", body);
+   /* var invocation = new XMLHttpRequest();
+    var url = 'http://localhost:60083/api/Mailing';
+
+      if (invocation) {
+        invocation.open('GET', url, true);
+        invocation.onreadystatechange = handler;
+        invocation.send();
+      }*/
+    var body = {
+      email: {
+        serviceType: this.serviceType,
+        waterPropertyType: this.waterPropertyType,
+        eletricPropertyType: this.eletricPropertyType,
+        residentType: this.residentType
+      }, 
+      postal: {
+        serviceType: this.serviceType,
+        waterPropertyType: this.waterPropertyType,
+        eletricPropertyType: this.eletricPropertyType,
+        residentType: this.residentType
+        }
+    };
+    console.log("[DEBUG] body:", JSON.stringify(body));
 		// The post request which takes parameters of address, body, options
-    this.http.get(API_URL + '/customers')
+    this.http.post('/api/Mailing', body)
       .map((res) => res.json())
-      .subscribe((data) => this.waitForHttp(data));
-    this.received = "block";
+      .subscribe((data) => console.log(data));
+    //this.received = "block";
   }
 
 	private waitForHttp(data: any) {
-  if (data !== undefined) {
-    console.log("There is a report");
-    this.report = JSON.stringify(data);
-    this.report = this.report.replace(/{/g,"");
-    this.report = this.report.replace(/]/g, "");
-    this.report = this.report.replace(/\[/g, "");
-    this.report = this.report.split("},");
-    console.log("After reassignment:" + this.report);
-  }*/
-}
+    if (data !== undefined) {
+      this.report = data;
+      console.log("There is a report");
+      this.report = JSON.stringify(data);
+      this.report = this.report.replace(/{/g,"");
+      this.report = this.report.replace(/]/g, "");
+      this.report = this.report.replace(/\[/g, "");
+      this.report = this.report.split("},");
+      console.log("After reassignment:" + this.report);
+    }
+      console.log(this.report);
+  }
 }
 
