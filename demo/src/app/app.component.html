@@ -1,17 +1,16 @@
 <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
-<div class="rightColumn">
+<div class="leftColumn">
   <button class="material-icons" mat-icon-button [matMenuTriggerFor]="menu">
     <i class="material-icons">settings</i>
   </button>
   <mat-menu #menu="matMenu">
-    <mat-checkbox *ngFor="let page of pages"
+    <mat-checkbox (change)="showSelected()" *ngFor="let page of pages"
                   class="example-margin" [(ngModel)]="page.isChecked">
       {{ page.display }}
     </mat-checkbox>
   </mat-menu>
-</div>
-<div class="leftColumn">
+
   <ul>
     <li>
       <button mat-button>
@@ -27,10 +26,18 @@
     <li><button mat-button><a routerLink="./safety">Safety</a></button></li>
   </ul>
 </div>
+<div class="leftColumn">
+  <router-outlet></router-outlet>
+</div>
+<div class="extras">
+  <div class="extras">
+    <div [ngStyle]="{'display':mailing}" class="container">
+      <app-mailing></app-mailing>
 
-<div class="content" style="right:80%;">
-
-
+    </div>
+    <div [ngStyle]="{'display':outage}" class="container">
+      <app-outage></app-outage>
+    </div>
+  </div>
 </div>
 
-<router-outlet></router-outlet>

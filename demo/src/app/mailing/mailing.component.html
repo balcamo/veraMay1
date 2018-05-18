@@ -10,9 +10,8 @@
           select what field you want to filter by
         </mat-panel-description>
       </mat-expansion-panel-header>
-      <mat-checkbox *ngFor="let check of checks"
+      <mat-checkbox (change)="showSelected()" *ngFor="let check of checks"
                     class="example-margin" [(ngModel)]="check.isChecked">{{ check.display }}</mat-checkbox>
-      <button mat-button (click)="showSelected()">Submit</button>
 
     </mat-expansion-panel>
 

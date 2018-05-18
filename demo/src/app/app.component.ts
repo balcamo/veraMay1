@@ -12,9 +12,11 @@ import { MatIconRegistry } from '@angular/material';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
+  mailing = "none";
+  outage = "none";
   pages = [
-    { display: "Email", isChecked: false },
-    { display: "Postal Mail", isChecked: false }
+    { display: "Mailing", isChecked: false, value:this.mailing },
+    { display: "Outage", isChecked: false, value: this.outage }
   ]
   title = 'app';
   constructor(private dialog: MatDialog) { }
@@ -29,6 +31,19 @@ export class AppComponent {
 
     });
 
+  }
+  public showSelected() {
+    console.log("mailing is currently " + this.mailing);
+    if (this.pages[0].isChecked) {
+      this.mailing = "block";
+    } else {
+      this.mailing = "none";
+    }
+    if (this.pages[1].isChecked) {
+      this.outage = "block";
+    } else {
+      this.outage = "none";
+    }
   }
 }
 

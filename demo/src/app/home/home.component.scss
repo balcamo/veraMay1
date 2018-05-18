@@ -23,4 +23,13 @@
 .color-dark {
   background-color: map-get($darkgrey,900);
 }
+.leftColumn {
+  display: block;
+  align-content: center;
+  left: 100%;
+  min-width: 275px;
+  max-width: 350px;
+  display: block;
+  overflow-x: hidden;
+}
 

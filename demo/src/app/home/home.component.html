@@ -1,21 +1,23 @@
-<div class="container color-dark">
-  <div>
-    <p>Your Favorite Links!</p>
+<div class="leftColumn">
+  <div class="container color-dark">
+    <div>
+      <p>Your Favorite Links!</p>
+    </div>
   </div>
-</div>
-<br />
-<br />
-<button mat-raised-button (click)="openModal()">Add Favorites</button>
-<br />
-<br />
-<mat-grid-list cols="4" rowHeight="50px">
+  <br />
+  <br />
+  <button mat-raised-button (click)="openModal()">Add Favorites</button>
+  <br />
+  <br />
+  <mat-grid-list cols="4" rowHeight="50px">
 
-  <mat-grid-tile *ngFor="let opt of options" [colspan]="opt.col"
-                 [rowspan]="opt.row"
-                 [ngStyle]="{'display':opt.value}">
-    <a  routerLink="./{{opt.display}}">{{opt.display}}</a>
-  </mat-grid-tile>
-</mat-grid-list>
+    <mat-grid-tile *ngFor="let opt of options" [colspan]="opt.col"
+                   [rowspan]="opt.row"
+                   [ngStyle]="{'display':opt.value}">
+      <a  routerLink="./{{opt.display}}">{{opt.display}}</a>
+    </mat-grid-tile>
+  </mat-grid-list>
+</div>
 
 
 
