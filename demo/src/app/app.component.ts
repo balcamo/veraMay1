@@ -65,6 +65,13 @@ export class MyTel {
   }
 })
 export class OutageReportComponent implements MatFormFieldControl<MyTel>, OnDestroy {
+  outage = "none";
+  serviceRequest = "none";
+
+  public options = [
+    { display: "Outage", isChecked: false, value: this.outage },
+    { display: "Service Request", isChecked: false, value: this.serviceRequest }
+  ]
   constructor(fb: FormBuilder, private fm: FocusMonitor, private elRef: ElementRef,
     public dialogRef: MatDialogRef<OutageReportComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
 
@@ -76,6 +83,8 @@ export class OutageReportComponent implements MatFormFieldControl<MyTel>, OnDest
       'area': '',
       'exchange': '',
       'subscriber': '',
+      'email': '',
+      'request':'',
     });
     fm.monitor(elRef.nativeElement, true).subscribe((origin) => {
       this.focused = !!origin;
@@ -99,6 +108,19 @@ export class OutageReportComponent implements MatFormFieldControl<MyTel>, OnDest
   errorState = false;
 
   controlType = 'my-tel-input';
+  public showSelected() {
+    console.log("email is currently " + this.outage);
+    if (this.options[0].isChecked) {
+      this.outage = "block";
+    } else {
+      this.outage = "none";
+    }
+    if (this.options[1].isChecked) {
+      this.serviceRequest = "block";
+    } else {
+      this.serviceRequest = "none";
+    }
+  }
   get empty() {
     let n = this.form.value;
     return !n.area && !n.exchange && !n.subscriber;

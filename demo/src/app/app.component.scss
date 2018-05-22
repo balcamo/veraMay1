@@ -27,6 +27,10 @@ mat-checkbox {
 mat-form-field {
   width:100vw;
 }
+mat-checkbox {
+  margin: auto;
+  padding: 1vw;
+}
 
 div.span {
   opacity: 0;
@@ -38,7 +42,7 @@ div.span {
   left: 0;
   float:left;
   min-width: 275px;
-  max-width: 650px;
+  max-width: 550px;
   display: block;
   overflow-x: hidden;
   margin: 0 10px 10px 0;

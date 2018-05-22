@@ -21,15 +21,21 @@ export class MailingComponent implements OnInit {
   postalCh: string = "none";
   waterCh: string = "none";
   eletricCh: string = "none";
+  emailWaterCh: string = "none";
+  emailEletricCh: string = "none";
   // radio inputs
   //serviceType = "both";
   //status = "active";
   public email: string;
   public postal: string;
-  public serviceType: string;
-  public waterPropertyType: string;
-  public eletricPropertyType: string;
-  public residentType: string;
+  public emailServiceType: string;
+  public emailWaterPropertyType: string;
+  public emailEletricPropertyType: string;
+  public emailResidentType: string;
+  public postalServiceType: string;
+  public postalWaterPropertyType: string;
+  public postalEletricPropertyType: string;
+  public postalResidentType: string;
   received = "none";
   filter: any;
 
@@ -60,7 +66,21 @@ export class MailingComponent implements OnInit {
       this.postalCh = "none";
     }
   }
-  public getServiceType(service: string) {
+  public getEmailServiceType(service: string) {
+    if (service == "water") {
+      this.emailWaterCh = "block";
+      this.emailEletricCh = "none";
+    }
+    if (service == "eletric") {
+      this.emailEletricCh = "block";
+      this.emailWaterCh = "none";
+    }
+    if (service == "both") {
+      this.emailWaterCh = "block";
+      this.emailEletricCh = "block";
+    }
+  }
+  public getPostalServiceType(service: string) {
     if (service == "water") {
       this.waterCh = "block";
       this.eletricCh = "none";
@@ -79,10 +99,10 @@ export class MailingComponent implements OnInit {
     // TODO : make REST call
     console.log("get emial? " + this.email);
     console.log("get postal mailing list? " + this.postal);
-    console.log("serviceType " + this.serviceType);
-    console.log("waterPropertyType " + this.waterPropertyType);
-    console.log("eletricPropertyType " + this.eletricPropertyType);
-    console.log("residentType " + this.residentType);
+    console.log("serviceType " + this.emailServiceType);
+    console.log("waterPropertyType " + this.emailWaterPropertyType);
+    console.log("eletricPropertyType " + this.emailEletricPropertyType);
+    console.log("residentType " + this.emailResidentType);
     var uploadObj = { key: this.reportName };
     // Initialize parameters for URL
     let params: URLSearchParams = new URLSearchParams();
@@ -107,25 +127,22 @@ export class MailingComponent implements OnInit {
         invocation.send();
       }*/
     var body = {
-      email: {
-        serviceType: this.serviceType,
-        waterPropertyType: this.waterPropertyType,
-        eletricPropertyType: this.eletricPropertyType,
-        residentType: this.residentType
-      }, 
-      postal: {
-        serviceType: this.serviceType,
-        waterPropertyType: this.waterPropertyType,
-        eletricPropertyType: this.eletricPropertyType,
-        residentType: this.residentType
-        }
+      emailServiceType: this.emailServiceType,
+      emailWaterPropertyType: this.emailWaterPropertyType,
+      emailEletricPropertyType: this.emailEletricPropertyType,
+      emailResidentType: this.emailResidentType, 
+      postalServiceType: this.postalServiceType,
+      postalWaterPropertyType: this.postalWaterPropertyType,
+      postalEletricPropertyType: this.postalEletricPropertyType,
+      postalResidentType: this.postalResidentType
     };
     console.log("[DEBUG] body:", JSON.stringify(body));
 		// The post request which takes parameters of address, body, options
     this.http.post('/api/Mailing', body)
       .map((res) => res.json())
-      .subscribe((data) => console.log(data));
+      .subscribe((data) => this.waitForHttp(data));
     //this.received = "block";
+    
   }
 
 	private waitForHttp(data: any) {
@@ -140,6 +157,22 @@ export class MailingComponent implements OnInit {
       console.log("After reassignment:" + this.report);
     }
       console.log(this.report);
+
+      this.emailCh = "none";
+      this.postalCh = "none";
+      this.waterCh = "none";
+      this.eletricCh = "none";
+      this.emailWaterCh = "none";
+      this.emailEletricCh = "none";
+      this.emailServiceType= "";
+      this.emailWaterPropertyType = "";
+      this.emailEletricPropertyType = "";
+      this.emailResidentType = "";
+      this.postalServiceType = "";
+      this.postalWaterPropertyType = "";
+      this.postalEletricPropertyType = "";
+      this.postalResidentType = "";
+      alert('Your job has been submitted');
   }
 }
 

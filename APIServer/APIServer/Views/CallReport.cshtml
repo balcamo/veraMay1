@@ -1,0 +1,61 @@
+﻿
+@{
+    ViewBag.Title = "CallReport";
+}
+
+<h2>CallReport</h2>
+
+<mat-dialog-content>
+    <div [formGroup]="form">
+        <mat-form-field>
+            <input matInput formControlName="address" placeholder="Address of Outage">
+        </mat-form-field>
+        <br />
+        <mat-form-field>
+            <input matInput formControlName="name" placeholder="Name">
+        </mat-form-field>
+        <br />
+
+        <mat-form-field>
+            <input matInput formControlName="email" placeholder="Customer Email">
+        </mat-form-field>
+
+        <p>Phone Number</p>
+
+        <input class="area" formControlName="area" size="3" maxlength="3">
+        <span>&ndash;</span>
+        <input class="exchange" formControlName="exchange" size="3" maxlength="3">
+        <span>&ndash;</span>
+        <input class="subscriber" formControlName="subscriber" size="4" maxlength="4">
+    </div>
+    <br />
+    <br />
+    <mat-checkbox (change)="showSelected()" *ngFor="let option  of options"
+                  class="example-margin" [(ngModel)]="option.isChecked">
+        {{ option.display }}
+    </mat-checkbox>
+    <div [ngStyle]="{'display':outage}" [formGroup]="form">
+        <p>Type of Outage</p>
+        <mat-radio-group formControlName="typeOutage">
+            <mat-radio-button value="water">Water</mat-radio-button>
+            <mat-radio-button value="eletric">Eletric</mat-radio-button>
+            <mat-radio-button value="both">Both</mat-radio-button>
+        </mat-radio-group>
+        <br />
+        <mat-form-field>
+            <textarea formControlName="circumstances" matInput placeholder="What Happened"></textarea>
+        </mat-form-field>
+        <br />
+    </div>
+    <div [ngStyle]="{'display':serviceRequest}" [formGroup]="form">
+        <p>Type of Service Requested</p>
+        <mat-form-field>
+            <textarea formControlName="request" matInput placeholder="Service Request"></textarea>
+        </mat-form-field>
+        <br />
+    </div>
+</mat-dialog-content>
+<mat-dialog-actions>
+    <button mat-button (click)="saveForm()" [mat-dialog-close]="form">submit</button>
+    <button mat-button type="button" mat-dialog-close>Cancel</button>
+</mat-dialog-actions>

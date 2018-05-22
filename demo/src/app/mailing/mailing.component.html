@@ -12,22 +12,57 @@
       </mat-expansion-panel-header>
       <mat-checkbox (change)="showSelected()" *ngFor="let check of checks"
                     class="example-margin" [(ngModel)]="check.isChecked">{{ check.display }}</mat-checkbox>
-
     </mat-expansion-panel>
-
   </mat-accordion>
+  <!-- Email list -->
+  <div>
+    <div [ngStyle]="{'display':emailCh}" class="container">
+      <p><span matTooltip="The status of the account for Emails" matTooltipPosition="after">Status (email)</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="emailServiceType">
+        <mat-radio-button (change)="getEmailServiceType('water')" class="example-margin" value="water">Water</mat-radio-button>
+        <mat-radio-button (change)="getEmailServiceType('eletric')" class="example-margin" value="eletric">Eletric</mat-radio-button>
+        <mat-radio-button (change)="getEmailServiceType('both')" class="example-margin" value="both">Both</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <!--water customers-->
+    <div [ngStyle]="{'display':emailWaterCh}" class="container">
+      <p><span matTooltip="Type of property for water customers for Emails" matTooltipPosition="after">Water Property Type (email)</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="emailWaterPropertyType">
+        <mat-radio-button class="example-margin" value="residential">Residential</mat-radio-button>
+        <mat-radio-button class="example-margin" value="residentialBooster">Residential Booster</mat-radio-button>
+        <mat-radio-button class="example-margin" value="general">General</mat-radio-button>
+        <mat-radio-button class="example-margin" value="generalBooster">General Booster</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <!--eletric customers-->
+    <div [ngStyle]="{'display':emailEletricCh}" class="container">
+      <p><span matTooltip="Type of property for eletric customers for Emails" matTooltipPosition="after">Eletric Property Type (email)</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="emailEletricPropertyType">
+        <mat-radio-button class="example-margin" value="residential">Residential</mat-radio-button>
+        <mat-radio-button class="example-margin" value="commercial">Commercial</mat-radio-button>
+        <mat-radio-button class="example-margin" value="both">Both</mat-radio-button>
+      </mat-radio-group>
+      <p><span matTooltip="The type of resident at the address for Emails" matTooltipPosition="after">Type of Resident (email)</span></p>
+      <mat-radio-group class="radio-group" [(ngModel)]="emailResidentType">
+        <mat-radio-button class="example-margin" value="owner">Owner</mat-radio-button>
+        <mat-radio-button class="example-margin" value="tennent">Tennent</mat-radio-button>
+        <mat-radio-button class="example-margin" value="both">Both</mat-radio-button>
+      </mat-radio-group>
+    </div>
+  </div>
+  <!-- postal list -->
   <div>
     <div [ngStyle]="{'display':postalCh}" class="container">
-      <p><span matTooltip="The status of the account" matTooltipPosition="after">Status</span></p>
+      <p><span matTooltip="The status of the account" matTooltipPosition="after">Status (postal)</span></p>
       <mat-radio-group class="radio-group" [(ngModel)]="serviceType">
-        <mat-radio-button (change)="getServiceType('water')" class="example-margin" value="water">Water</mat-radio-button>
-        <mat-radio-button (change)="getServiceType('eletric')" class="example-margin" value="eletric">Eletric</mat-radio-button>
-        <mat-radio-button (change)="getServiceType('both')" class="example-margin" value="both">Both</mat-radio-button>
+        <mat-radio-button (change)="getPostalServiceType('water')" class="example-margin" value="water">Water</mat-radio-button>
+        <mat-radio-button (change)="getPostalServiceType('eletric')" class="example-margin" value="eletric">Eletric</mat-radio-button>
+        <mat-radio-button (change)="getPostalServiceType('both')" class="example-margin" value="both">Both</mat-radio-button>
       </mat-radio-group>
     </div>
     <!--water customers-->
     <div [ngStyle]="{'display':waterCh}" class="container">
-      <p><span matTooltip="Type of property for water customers" matTooltipPosition="after">Water Property Type</span></p>
+      <p><span matTooltip="Type of property for water customers for Postal" matTooltipPosition="after">Water Property Type (postal)</span></p>
       <mat-radio-group class="radio-group" [(ngModel)]="waterPropertyType">
         <mat-radio-button class="example-margin" value="residential">Residential</mat-radio-button>
         <mat-radio-button class="example-margin" value="residentialBooster">Residential Booster</mat-radio-button>
@@ -37,13 +72,13 @@
     </div>
     <!--eletric customers-->
     <div [ngStyle]="{'display':eletricCh}" class="container">
-      <p><span matTooltip="Type of property for eletric customers" matTooltipPosition="after">Eletric Property Type</span></p>
+      <p><span matTooltip="Type of property for eletric customers for Postal" matTooltipPosition="after">Eletric Property Type (postal)</span></p>
       <mat-radio-group class="radio-group" [(ngModel)]="eletricPropertyType">
         <mat-radio-button class="example-margin" value="residential">Residential</mat-radio-button>
         <mat-radio-button class="example-margin" value="commercial">Commercial</mat-radio-button>
         <mat-radio-button class="example-margin" value="both">Both</mat-radio-button>
       </mat-radio-group>
-      <p><span matTooltip="The type of resident at the address" matTooltipPosition="after">Type of Resident</span></p>
+      <p><span matTooltip="The type of resident at the address for Postal" matTooltipPosition="after">Type of Resident (postal)</span></p>
       <mat-radio-group class="radio-group" [(ngModel)]="residentType">
         <mat-radio-button class="example-margin" value="owner">Owner</mat-radio-button>
         <mat-radio-button class="example-margin" value="tennent">Tennent</mat-radio-button>
@@ -51,9 +86,12 @@
       </mat-radio-group>
     </div>
   </div>
+
+
   <div>
     <button mat-button (click)="getReport()">Get Report</button>
   </div>
+
   <div [ngStyle]="{'display':received}" class="container">
     <p>The returned values are</p>
     <table>
