@@ -6,6 +6,9 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs'
 import { MatIconRegistry } from '@angular/material';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
+import { CustomerList } from '../vera/vera.customer';
+import { LocalStorageService } from "angular-2-local-storage";
+import { CustomerService } from '../services/api.service';
 
 
 export class MyTel {
@@ -29,14 +32,18 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
   outage = "none";
   serviceRequest = "none";
   http: Http;
-
+  customerService: CustomerService;
+  customerList: CustomerList;
   public options = [
     { display: "Outage", isChecked: false, value: this.outage },
     { display: "Service Request", isChecked: false, value: this.serviceRequest }
   ]
   constructor(fb: FormBuilder, private fm: FocusMonitor, private elRef: ElementRef, http: Http,
+    private localStorageService: LocalStorageService, customerService: CustomerService,
     public dialogRef: MatDialogRef<CallReportComponent>, @Inject(MAT_DIALOG_DATA) public data: any) {
     this.http = http;
+    this.customerService = customerService;
+    this.customerList = this.customerService.getCustomerList();
     this.form = fb.group({
       'name': '',
       'typeOutage': '',

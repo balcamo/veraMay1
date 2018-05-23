@@ -38,6 +38,7 @@ export class AppComponent {
         .catch(this.catchError)
         .subscribe((data) => this.setCustomers(data));
     }
+    // add local storage if needed
   }
   setCustomers(data: any) {
     if (data !== undefined) {
