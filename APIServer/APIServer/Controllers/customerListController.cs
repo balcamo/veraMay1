@@ -10,9 +10,11 @@ namespace APIServer.Controllers
     public class customerListController : ApiController
     {
         // GET: api/customerList
-        public IEnumerable<string> Get()
+        public IEnumerable<Customer> Get()
         {
-            return new string[] { "value1", "value2" };
+            // Customer[] customerList = getCustomerList();
+            // return customerList
+            return new Customer[] {};
         }
 
         // GET: api/customerList/5
@@ -35,5 +37,12 @@ namespace APIServer.Controllers
         public void Delete(int id)
         {
         }
+    }
+    public class Customer
+    {
+        public string name;
+        public string address;
+        public string number;
+        public string email;
     }
 }
