@@ -53,20 +53,21 @@ import { AppRoutingModule } from './app-routing.module';
 import { ReactiveFormsModule, FormsModule} from '@angular/forms';
 
 /* the client pages */
-import { AppComponent, OutageReportComponent, FormFieldPhoneNumber } from './app.component';
+import { AppComponent } from './app.component';
 import { HomeComponent, AddFavDialogComponent } from './home/home.component';
 import { AboutComponent } from './about/about.component';
 import { SafetyComponent } from './safety/safety.component';
 import { MailingComponent } from './mailing/mailing.component';
-import { ApiService } from './services/api.service';
+import { CustomerService } from './services/api.service';
 import { ReportServiceService } from './services/report-service.service';
 import { OutageComponent } from './outage/outage.component';
+import { CallReportComponent, FormFieldPhoneNumber } from './call-report/call-report.component';
 
 @NgModule({
   entryComponents: [
     AddFavDialogComponent,
     HomeComponent,
-    OutageReportComponent,
+    CallReportComponent,
     FormFieldPhoneNumber
     ],
   declarations: [
@@ -77,8 +78,8 @@ import { OutageComponent } from './outage/outage.component';
     MailingComponent,
     OutageComponent,
     AddFavDialogComponent,
-    OutageReportComponent,
     FormFieldPhoneNumber,
+    CallReportComponent,
 
   ],
   imports: [
@@ -157,7 +158,7 @@ import { OutageComponent } from './outage/outage.component';
     MatToolbarModule,
     MatTooltipModule,
   ],
-  providers: [ApiService, ReportServiceService, FormFieldPhoneNumber],
+  providers: [CustomerService, ReportServiceService, FormFieldPhoneNumber],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

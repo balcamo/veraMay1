@@ -1,26 +1,18 @@
-export class Customer {
-  // class variables
-  private name: string;
-  private status: string;
-  private serviceType: string;
+export interface Customer {
+  name: string;
+  address: string;
+  number: string;
+  email: string;
+}
 
+export class CustomerList {
+  customers: Customer[];
 
-  setName(name: string) {
-    this.name = name;
+  setCustomers(customers: Customer[]) {
+    this.customers = customers;
   }
-  getName() {
-    return this.name;
+  getCustomers() {
+    return this.customers;
   }
-  setStatus(status: string) {
-    this.status = status;
-  }
-  getStatus() {
-    return this.status;
-  }
-  setServiceType(serviceType: string) {
-    this.serviceType = serviceType;
-  }
-  getServiceType() {
-    return this.serviceType;
-  }
+
 }

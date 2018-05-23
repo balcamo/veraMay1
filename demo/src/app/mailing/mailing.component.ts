@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
-import { ApiService } from '../services/api.service';
+import { CustomerService } from '../services/api.service';
 
 import { Observable } from 'rxjs/Observable';
 import { environment } from '../../environments/environment';
@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   selector: 'app-mailing',
   templateUrl: './mailing.component.html',
   styleUrls: ['./mailing.component.scss'],
-  providers: [ApiService]
+  providers: [CustomerService]
 })
 export class MailingComponent implements OnInit {
   http: Http;
