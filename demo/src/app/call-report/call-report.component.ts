@@ -6,7 +6,7 @@ import { coerceBooleanProperty } from '@angular/cdk/coercion';
 import { Subject } from 'rxjs'
 import { MatIconRegistry } from '@angular/material';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
-import { CustomerList } from '../vera/vera.customer';
+import { CustomerList, Customer } from '../vera/vera.customer';
 import { LocalStorageService } from "angular-2-local-storage";
 import { CustomerService } from '../services/api.service';
 
@@ -33,7 +33,7 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
   serviceRequest = "none";
   http: Http;
   customerService: CustomerService;
-  customerList: CustomerList;
+  customerList: Customer[];
   public options = [
     { display: "Outage", isChecked: false, value: this.outage },
     { display: "Service Request", isChecked: false, value: this.serviceRequest }

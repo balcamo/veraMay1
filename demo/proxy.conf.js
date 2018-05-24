@@ -1,8 +1,10 @@
 const PROXY_CONFIG = [
-    {
-        context: [
-            "/api/Mailing",
-            "/api/Values",
+  {
+        //add endpoins to this list
+    context: [
+      "/api/CustomerList",
+      "/api/Mailing",
+            
 
     ],
     // TODO : change to server location/url

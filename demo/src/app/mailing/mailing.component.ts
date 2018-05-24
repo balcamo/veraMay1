@@ -10,7 +10,7 @@ import { environment } from '../../environments/environment';
   selector: 'app-mailing',
   templateUrl: './mailing.component.html',
   styleUrls: ['./mailing.component.scss'],
-  providers: [CustomerService]
+  providers: [CustomerService],
 })
 export class MailingComponent implements OnInit {
   http: Http;

@@ -12,13 +12,13 @@ import 'rxjs/add/operator/map';
 @Injectable()
 export class CustomerService {
 
-  private customerListObj: CustomerList;
+  private customerListObj: Customer[];
   private customerObj: Customer;
 
-  public getCustomerList(): CustomerList {
+  public getCustomerList(): Customer[] {
     return this.customerListObj;
   }
-  public setCustomerList(customerList: CustomerList) {
+  public setCustomerList(customerList: Customer[]) {
     this.customerListObj = customerList;
   }
 

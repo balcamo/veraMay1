@@ -4,17 +4,21 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using APIServer.helperClasses;
+using APIServer.Models;
 
 namespace APIServer.Controllers
 {
-    public class customerListController : ApiController
+    public class CustomerListController : ApiController
     {
         // GET: api/customerList
-        public IEnumerable<Customer> Get()
+        public string Get()
+        //public List<Customer> Get()
         {
-            // Customer[] customerList = getCustomerList();
+            CutomerList customerHelper = new CutomerList();
+            List<Customer> customerList = customerHelper.getCustomerList();
             // return customerList
-            return new Customer[] {};
+            return "hello";
         }
 
         // GET: api/customerList/5
@@ -24,8 +28,12 @@ namespace APIServer.Controllers
         }
 
         // POST: api/customerList
-        public void Post([FromBody]string value)
+        public List<Customer> Post([FromBody]string value)
         {
+            CutomerList customerHelper = new CutomerList();
+            List<Customer> customerList = customerHelper.getCustomerList();
+            // return customerList
+            return customerList;
         }
 
         // PUT: api/customerList/5
@@ -38,11 +46,5 @@ namespace APIServer.Controllers
         {
         }
     }
-    public class Customer
-    {
-        public string name;
-        public string address;
-        public string number;
-        public string email;
-    }
+    
 }
