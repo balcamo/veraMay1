@@ -12,13 +12,13 @@ namespace APIServer.Controllers
     public class CustomerListController : ApiController
     {
         // GET: api/customerList
-        public string Get()
-        //public List<Customer> Get()
+        //public string Get()
+        public List<Customer> Get()
         {
             CutomerList customerHelper = new CutomerList();
             List<Customer> customerList = customerHelper.getCustomerList();
-            // return customerList
-            return "hello";
+            return customerList;
+            //return "hello";
         }
 
         // GET: api/customerList/5

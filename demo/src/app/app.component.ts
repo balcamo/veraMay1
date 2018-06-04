@@ -1,17 +1,15 @@
-import { Component, OnInit, Inject, ElementRef, Input, OnDestroy  } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldControl } from "@angular/material";
-import { FormGroup, FormBuilder } from '@angular/forms';
+import { Component, OnInit, ViewChild, Inject, ElementRef, Input, OnDestroy  } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldControl, MatIconRegistry } from "@angular/material";
+import { FormGroup, FormBuilder, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Subject } from 'rxjs'
-import { MatIconRegistry } from '@angular/material';
+import { Subject, Observable, } from 'rxjs';
 import { CallReportComponent } from './call-report/call-report.component';
 import { Customer, CustomerList } from './vera/vera.customer';
 import { LocalStorageService } from "angular-2-local-storage";
 import { CustomerService } from './services/api.service';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
-import { Observable } from 'rxjs/Observable';
-import { startWith, map } from 'rxjs/operators';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 @Component({
   selector: 'app-root',
@@ -19,23 +17,25 @@ import { startWith, map } from 'rxjs/operators';
   styleUrls: ['./app.component.scss'],
   providers: [CustomerService],
 })
-export class AppComponent {
+export class AppComponent implements OnInit{
   http: Http;
   mailing = "none";
   outage = "none";
   customerList: Customer[];
   customerService: CustomerService;
 
+
   customerListForm: FormGroup = this.fb.group({
-    customerList: '',
+    customer: '',
   });
   customerGroupOptions: Observable<Customer[]>;
+
   ngOnInit() {
-    this.customerGroupOptions = this.customerListForm.get('customerList')!.valueChanges
+    /*this.customerGroupOptions = this.customerListForm.valueChanges
       .pipe(
         startWith(''),
         map(val => this.filterGroup(val))
-      );
+      );*/
   }
 
   filterGroup(val: string): Customer[] {
@@ -44,7 +44,6 @@ export class AppComponent {
         .map(group => ({ name: group.name, address: group.address, number:group.number, email:group.email }))
         .filter(group => group.address.length > 0);
     }
-
     return this.customerList;
   }
 
@@ -57,23 +56,18 @@ export class AppComponent {
     { display: "Mailing", isChecked: false, value:this.mailing },
     { display: "Outage", isChecked: false, value: this.outage }
   ]
+
   title = 'app';
+
   constructor(private dialog: MatDialog, customerService: CustomerService, http: Http, private fb: FormBuilder,) {
     this.customerService = customerService;
     this.http = http;
     this.customerList = this.customerService.getCustomerList();
     if (this.customerList == null) {
-      
-      var pageHeaders = new Headers();
-      pageHeaders.append('Content-Type', 'application/json');
-      let options = new RequestOptions({
-
-        headers: pageHeaders
-      });
       this.http.get('/api/CustomerList')
         .map((res) => res.json())
-        .subscribe((data) => console.log(data));
-        //.subscribe((data) => this.setCustomers(data));
+        //.subscribe((data) => console.log(data));
+        .subscribe((data) => this.setCustomers(data));
     }
     // add local storage if needed
   }
@@ -81,11 +75,12 @@ export class AppComponent {
     if (data !== undefined) {
       console.log("There is a list of customers");
       this.customerList = data as Customer[];
-      this.customerList = Object.setPrototypeOf(this.customerList, CustomerList.prototype)
-      console.log("After reassignment:" + this.customerList);
+      //this.customerList = Object.setPrototypeOf(this.customerList, Customer.prototype)
+      console.log("After reassignment:" + JSON.stringify(this.customerList));
       this.customerService.setCustomerList(this.customerList);
     }
   }
+
   private catchError(error: Response) {
     var errorMes = "This shit is mucked";
     return Observable.throw(errorMes);

@@ -1,0 +1,6 @@
+C:\Users\balcamo\source\repos\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\bin\Debug\VeraCoreLibrary.dll
+C:\Users\balcamo\source\repos\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\bin\Debug\VeraCoreLibrary.pdb
+C:\Users\balcamo\source\repos\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\obj\Debug\VeraCoreLibrary.csprojAssemblyReference.cache
+C:\Users\balcamo\source\repos\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\obj\Debug\VeraCoreLibrary.csproj.CoreCompileInputs.cache
+C:\Users\balcamo\source\repos\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\obj\Debug\VeraCoreLibrary.dll
+C:\Users\balcamo\source\repos\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\obj\Debug\VeraCoreLibrary.pdb

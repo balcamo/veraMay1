@@ -1,14 +1,14 @@
-import { Component, Inject, ElementRef, Input, OnDestroy } from '@angular/core';
-import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldControl } from "@angular/material";
+import { Component, Inject, ElementRef, Input, OnDestroy,  } from '@angular/core';
+import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldControl, MatIconRegistry } from "@angular/material";
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Subject } from 'rxjs'
-import { MatIconRegistry } from '@angular/material';
+import { Subject } from 'rxjs';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
 import { CustomerList, Customer } from '../vera/vera.customer';
 import { LocalStorageService } from "angular-2-local-storage";
 import { CustomerService } from '../services/api.service';
+import { MatAutocompleteModule } from '@angular/material/autocomplete';
 
 
 export class MyTel {
