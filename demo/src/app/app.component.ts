@@ -3,7 +3,7 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldControl, MatIconR
 import { FormGroup, FormBuilder, ReactiveFormsModule, FormControl } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Subject, Observable, } from 'rxjs';
+import { Subject, Observable } from 'rxjs';
 import { CallReportComponent } from './call-report/call-report.component';
 import { Customer, CustomerList } from './vera/vera.customer';
 import { LocalStorageService } from "angular-2-local-storage";
@@ -21,14 +21,11 @@ export class AppComponent implements OnInit{
   http: Http;
   mailing = "none";
   outage = "none";
-  customerList: Customer[];
+  customerList: CustomerList;
   customerService: CustomerService;
 
 
-  customerListForm: FormGroup = this.fb.group({
-    customer: '',
-  });
-  customerGroupOptions: Observable<Customer[]>;
+
 
   ngOnInit() {
     /*this.customerGroupOptions = this.customerListForm.valueChanges
@@ -38,12 +35,12 @@ export class AppComponent implements OnInit{
       );*/
   }
 
-  filterGroup(val: string): Customer[] {
-    if (val) {
+  filterGroup(val: string): CustomerList {
+    /*if (val) {
       return this.customerList
         .map(group => ({ name: group.name, address: group.address, number:group.number, email:group.email }))
         .filter(group => group.address.length > 0);
-    }
+    }*/
     return this.customerList;
   }
 
@@ -63,26 +60,38 @@ export class AppComponent implements OnInit{
     this.customerService = customerService;
     this.http = http;
     this.customerList = this.customerService.getCustomerList();
-    if (this.customerList == null) {
+    if (this.customerList == undefined) {
       this.http.get('/api/CustomerList')
         .map((res) => res.json())
         //.subscribe((data) => console.log(data));
-        .subscribe((data) => this.setCustomers(data));
+        .subscribe(
+          data => this.setCustomers(JSON.stringify(data)),
+          err => this.catchError(err)
+        );
     }
     // add local storage if needed
   }
   setCustomers(data: any) {
     if (data !== undefined) {
       console.log("There is a list of customers");
-      this.customerList = data as Customer[];
-      //this.customerList = Object.setPrototypeOf(this.customerList, Customer.prototype)
-      console.log("After reassignment:" + JSON.stringify(this.customerList));
+      var customer = data as string;
+      
+      //this.customerList = JSON.parse(data);
+      //this.customerList = Object.assign(new CustomerList, data);
+      //this.customerList.copyInto(data);
+      console.log("After reassignment:" + this.customerList);
+      console.log(typeof this.customerList);
       this.customerService.setCustomerList(this.customerList);
+      customer = customer.replace(/{/g, "");
+      customer = customer.replace(/]/g, "");
+      customer = customer.replace(/\[/g, "");
+      var customers = customer.split("},");
+      console.log("After reassignment:" + customers);
     }
   }
 
   private catchError(error: Response) {
-    var errorMes = "This shit is mucked";
+    var errorMes = "There is a problem";
     return Observable.throw(errorMes);
   }
  

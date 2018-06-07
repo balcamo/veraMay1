@@ -5,7 +5,7 @@ VisualStudioVersion = 15.0.27703.2000
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "APIServer", "APIServer\APIServer.csproj", "{DE631683-7278-4FBC-96C1-6EE7AB139D4D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeraCoreLibrary", "..\VeraCodeLibrary\VeraCoreLibrary\VeraCoreLibrary\VeraCoreLibrary.csproj", "{B171DDC0-F1AB-44EF-B20B-5B0772D96F1B}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VeraCoreLibrary", "VeraCoreLibrary\VeraCoreLibrary\VeraCoreLibrary.csproj", "{B171DDC0-F1AB-44EF-B20B-5B0772D96F1B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

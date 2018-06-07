@@ -3,13 +3,12 @@ import { MatDialog, MatDialogRef, MAT_DIALOG_DATA, MatFormFieldControl, MatIconR
 import { FormGroup, FormBuilder } from '@angular/forms';
 import { FocusMonitor } from '@angular/cdk/a11y';
 import { coerceBooleanProperty } from '@angular/cdk/coercion';
-import { Subject } from 'rxjs';
 import { Headers, Http, URLSearchParams, RequestOptions } from '@angular/http';
 import { CustomerList, Customer } from '../vera/vera.customer';
 import { LocalStorageService } from "angular-2-local-storage";
 import { CustomerService } from '../services/api.service';
 import { MatAutocompleteModule } from '@angular/material/autocomplete';
-
+import { Subject, Observable, } from 'rxjs';
 
 export class MyTel {
   constructor(public area: string, public exchange: string, public subscriber: string) { }
@@ -33,7 +32,13 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
   serviceRequest = "none";
   http: Http;
   customerService: CustomerService;
-  customerList: Customer[];
+  customerList: CustomerList;
+  fb: FormBuilder;
+  stateChanges = new Subject<void>();
+
+
+  customerGroupOptions: Observable<CustomerList>;
+
   public options = [
     { display: "Outage", isChecked: false, value: this.outage },
     { display: "Service Request", isChecked: false, value: this.serviceRequest }
@@ -44,6 +49,13 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
     this.http = http;
     this.customerService = customerService;
     this.customerList = this.customerService.getCustomerList();
+    if (this.customerList == null) {
+      this.http.get('/api/CustomerList')
+        .map((res) => res.json())
+        //.subscribe((data) => console.log(data));
+        .subscribe((data) => this.setCustomers(data));
+    }
+    console.log("the customerList in call-report " + this.customerList);
     this.form = fb.group({
       'name': '',
       'typeOutage': '',
@@ -55,10 +67,43 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
       'email': '',
       'request': '',
     });
+    this.fb = fb;
     fm.monitor(elRef.nativeElement, true).subscribe((origin) => {
       this.focused = !!origin;
       this.stateChanges.next();
     });
+  }
+
+  setCustomers(data: any) {
+    if (data !== undefined) {
+      console.log("There is a list of customers");
+      this.customerList = data as CustomerList;
+      //this.customerList = Object.setPrototypeOf(this.customerList, CustomerList.prototype);
+      //this.customerList = Object.setPrototypeOf(this.customerList, Customer.prototype)
+      console.log("After reassignment:" + JSON.stringify(this.customerList));
+      this.customerService.setCustomerList(this.customerList);
+    }
+  }
+
+  filterGroup(val: string): CustomerList {
+    if (val) {
+      /*return this.customerList
+        .map(group => ({ name: group.name, address: group.address, number: group.number, email: group.email }))
+        .filter(group => group.address.length > 0);*/
+    }
+    return this.customerList;
+  }
+
+  private _filter(opt: string[], val: string) {
+    const filterValue = val.toLowerCase();
+    return opt.filter(item => item.toLowerCase().startsWith(filterValue));
+  }
+  ngOnInit() {
+    /*this.customerGroupOptions = this.customerListForm.valueChanges
+      .pipe(
+        startWith(''),
+        map(val => this.filterGroup(val))
+      );*/
   }
 
   onNoClick(): void {
@@ -66,9 +111,6 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
   }
   static nextId = 0;
   form: FormGroup;
-
-
-  stateChanges = new Subject<void>();
 
   focused = false;
 
@@ -100,7 +142,9 @@ export class CallReportComponent implements MatFormFieldControl<MyTel>, OnDestro
   id = `my-tel-input-${CallReportComponent.nextId++}`;
 
   describedBy = '';
+  filterAddresses(value: string){
 
+}
   @Input()
   get placeholder() { return this._placeholder; }
   set placeholder(plh) {

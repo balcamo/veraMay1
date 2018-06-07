@@ -32,6 +32,7 @@ mat-checkbox {
   padding: 1vw;
 }
 
+
 div.span {
   opacity: 0;
   transition: opacity 200ms;
@@ -42,7 +43,7 @@ div.span {
   left: 0;
   float:left;
   min-width: 275px;
-  max-width: 550px;
+  //max-width: 550px;
   display: block;
   overflow-x: hidden;
   margin: 0 10px 10px 0;

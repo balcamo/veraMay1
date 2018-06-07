@@ -17,6 +17,12 @@ namespace APIServer.helperClasses
             customer.setAddress("123 E main st");
             customer.setEmail("abc@blah.com");
             customerList.Add(customer);
+            Customer customer1 = new Customer();
+            customer1.setName("Catherine");
+            customer1.setNumber("555-999-5555");
+            customer1.setAddress("123 E broadway st");
+            customer1.setEmail("defg@blah.com");
+            customerList.Add(customer1);
             return customerList;
         }
     }
