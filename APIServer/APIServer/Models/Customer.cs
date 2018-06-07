@@ -12,19 +12,19 @@ namespace APIServer.Models
         public string number;
         public string email;
 
-        public void setName(string name)
+        public void SetName(string name)
         {
             this.name = name;
         }
-        public void setNumber(string number)
+        public void SetNumber(string number)
         {
             this.number = number;
         }
-        public void setAddress(string address)
+        public void SetAddress(string address)
         {
             this.address = address;
         }
-        public void setEmail(string email)
+        public void SetEmail(string email)
         {
             this.email = email;
         }

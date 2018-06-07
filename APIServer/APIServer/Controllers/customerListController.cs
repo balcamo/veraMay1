@@ -16,7 +16,7 @@ namespace APIServer.Controllers
         public List<Customer> Get()
         {
             CutomerList customerHelper = new CutomerList();
-            List<Customer> customerList = customerHelper.getCustomerList();
+            List<Customer> customerList = customerHelper.GetCustomerList();
             return customerList;
             //return "hello";
         }
@@ -31,7 +31,7 @@ namespace APIServer.Controllers
         public List<Customer> Post([FromBody]string value)
         {
             CutomerList customerHelper = new CutomerList();
-            List<Customer> customerList = customerHelper.getCustomerList();
+            List<Customer> customerList = customerHelper.GetCustomerList();
             // return customerList
             return customerList;
         }
